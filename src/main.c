@@ -1,13 +1,13 @@
 #include <ti/screen.h>
 #include <ti/getcsc.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <ti/error.h>
 #include <sys/timers.h>
 #include <string.h>
 #include <stdio.h>
 #include <usbdrvce.h>
 #include <keypadc.h>
-#include <byteswap.h>
 
 #include "exceptions.h"
 
@@ -104,6 +104,7 @@ int entrypoint(void)
                 size_t transfered;
                 usb_error_t error = usb_GetDeviceDescriptor(device, &descriptor, sizeof(descriptor), &transfered);
 
+                printf("device: %p\n", device);
                 printf("getdec: %u\n", error);
                 while (!os_GetCSC());
                 printf("tranf: %u\n", transfered);
