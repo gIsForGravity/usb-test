@@ -21,7 +21,9 @@ int main(void) {
     }, e, {
         cleanup();
 
-        strncpy(os_AppErr1, "UNCAUGHT ERR", 13);
+        char excname[13] = {0};
+        sprintf(excname, "ERR 0x%X", e);
+        strncpy(os_AppErr1, excname, 13);
         os_ThrowError(OS_E_APPERR1);
     })
 }
