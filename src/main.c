@@ -48,7 +48,7 @@ usb_error_t usb_eventhandler(usb_event_t event, void *event_data, usb_callback_d
 }
 
 void setup(void) {
-    usb_error_t result = usb_Init(*usb_eventhandler, NULL, NULL, USB_USE_OS_HEAP);
+    usb_error_t result = usb_Init(usb_eventhandler, NULL, NULL, USB_DEFAULT_INIT_FLAGS);
     
     switch (result) {
         case USB_SUCCESS:
